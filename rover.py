@@ -3,8 +3,8 @@
 #by Ryan Straub
 
 def main():
-    Speed = eval(input("What is the speed of the object in miles per second?"))
-    Distance = eval(input("What is the distance the object will travel in miles?"))
+    Speed = 186000
+    Distance = 34000000
     Time = Distance / Speed
     print("The time it takes is", Time, "seconds.")
 
