@@ -3,6 +3,7 @@
 #Author: Ryan Straub
 #Created 2019 -03-01
 
+# JA: Where are the separate functions?
 def main():
     #get user's first and last names
     first = input("Enter your first name: ")
