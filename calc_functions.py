@@ -10,12 +10,12 @@ def main():
     if len(equation)<=2:
         print("This is not a formula.")
     else:
-        result = pemdas(equation)
+        print(pemdas(equation))
         
         
 def hasPrdDv(equation):
     # Checks for addition and subtraction in list then puts them in a list.
-    if "*" in "".join(equation) or "/" in "".join(equation):
+    if "*" in equation or "/" in equation:
         return True
     return False
 
@@ -29,12 +29,11 @@ def process(equation,i):
         result = float(equation[i-1]) + float(equation[i+1])
     elif equation[i]== '-':
         result = float(equation[i-1]) - float(equation[i+1])
-    for i in range(1):
-        del equation[i+1]
-        equation.insert(i-1,str(result))
+    del equation[i-1:i+2]
+    equation.insert(i-1,str(result))
         
     #Prints Result
-        print(result)
+    #print(result)
 
 def pemdas(equation):
     i = 0
@@ -53,7 +52,7 @@ def pemdas(equation):
         else:
             i = i + 1
     
-    return float(result, [0])
+    return float(equation[0])
    
 main()
 
