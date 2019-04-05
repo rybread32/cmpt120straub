@@ -20,22 +20,30 @@ def doLoop():
             if cmd not in ["add" ,"mult", "sub", "div"]:
                 print("Oops,Try Again!")
                 doLoop()
+            #Insert Numbers
             num1 = int(input("Enter the first number: "))
             num2 = int(input("Enter the second number: "))
-            if cmd == "add":
-                result = num1 + num2
-            elif cmd == "sub":
-                result = num1 - num2
-            elif cmd == "mult":
-                result = num1 * num2
-            elif cmd == "div":
-                result = num1 // num2
-            elif cmd == "quit":
-                break
+            try:
+                frac = num1/num2 #will crash because of division
+                if cmd == "add":
+                    result = num1 + num2
+                elif cmd == "sub":
+                    result = num1 - num2
+                elif cmd == "mult":
+                    result = num1 * num2
+                elif cmd == "div":
+                    result = num1 // num2
+                elif cmd == "quit":
+                    break
+            #If user tries to divide by zero
+            except:
+                print("Unable to divide by zero!")
+                frac = 0
+                doLoop()
         except:
-            print("Not Valid Command")
-            doLoop()
-            
+                print("Not Valid Command")
+                doLoop()
+        #Prints answer that is valid
         print("The result is " + str(result) + ".\n")
 
 def main():
