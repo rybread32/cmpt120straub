@@ -22,15 +22,16 @@ def createDisplay(win):
     text.draw(win)
     return text
 
+#Sets Coordinates for buttons
 def getCoords(i):
     coords = [[50,275],[200,335],[125,275],[50,215],[125,215],[200,215],[50,155],[125,155],[200,155],[50,95],
               [125,95],[200,95],[200,275],[275,215],[275,275],[275,155],[275,95],[275,335]]
     return coords[i][0], coords[i][1]
-
+#Makes Labels
 def getLabel(i):
      labels = ['+/-','Clear','0','1','2','3','4','5','6','7','8','9','.','+','-','*','/','=']
      return labels[i] 
-    
+
 def createButtons(win):
     color = ['white','white','orange','orange','orange','orange','orange','orange','orange','orange','orange','orange','white','white','white','white','white','white']
     size = [50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50]
@@ -43,6 +44,7 @@ def createButtons(win):
         button.draw(win)
         label.draw(win)
 
+#Takes value of buttons and prints it into string
 def evaluate(mouse, display):
     for i in range(18):
         x,y = getCoords(i)
@@ -52,12 +54,18 @@ def evaluate(mouse, display):
             break
     return getLabel(i)
 
+#Adds labels in string together
 def addEquation(equation,label):
     if label in ['+','-','*','/']:
         return equation + " " + label + " "
+#Makes number negative but you have to put first in equation then hit "="
+    elif label in ['+/-']:
+        return "-" 
+        int(label)
+        del label
     else:
         return equation + label
-        
+
 def main():
     win = createCanvas()
     display = createDisplay(win)
@@ -66,11 +74,13 @@ def main():
     while True:
         mouse = win.getMouse()
         label = evaluate(mouse, display)
+        #calculates answer
         if label == "=":
             result = pemdas(equation.split())
             display.setText(str(result))
-        if label == "Clear":
-            del result
+        #Clears screen by making new calculator
+        elif label == "Clear":
+            main()
         else:
             equation = addEquation(equation, label)
 
