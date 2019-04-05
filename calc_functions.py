@@ -3,14 +3,14 @@
 #Created by Ryan Straub
 #3/5/19
 
-def main():
+#def main()
     #Where you insert a formula.
-    equation = input("Insert Problem: ").split(" ")
+    #equation = input("Insert Problem: ").split(" ")
     #Is what you inserted just a number or not?
-    if len(equation)<=2:
-        print("This is not a formula.")
-    else:
-        print(pemdas(equation))
+    #if len(equation)<=2:
+        #print("This is not a formula.")
+    #else:
+        #print(pemdas(equation))
         
         
 def hasPrdDv(equation):
@@ -54,9 +54,6 @@ def pemdas(equation):
     
     return float(equation[0])
    
-main()
-
-
           
 
 
